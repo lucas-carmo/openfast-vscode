@@ -1,0 +1,119 @@
+{
+	"name": "OpenFASTinput",
+	"scopeName": "source.fst",
+	"patterns": [{ "include": "#expression" }],
+	"repository": {
+	  "expression": {
+		"patterns": [{ "include": "#accepted-values" }, { "include": "#condition" }, { "include": "#unit" }, { "include": "#header" },
+					 { "include": "#comment" }, { "include": "#number" }, { "include": "#bolean" }, { "include": "#default" }, 
+					 { "include": "#end" }, { "include": "#string" }, { "include": "#key" }, { "include": "#placeholder" }
+					]
+	  },
+	  "accepted-values": {
+		"begin": "\\{",
+		"end": "\\}",
+		"beginCaptures": {
+		  "0": { "name": "support.type.property-name.json" }
+		},
+		"endCaptures": {
+		  "0": { "name": "support.type.property-name.json" }
+		},
+		"name": "keyword.acceptedvalues",
+		"contentName": "support.type.property-name.json"
+	  },
+	  "condition": {
+		"begin": "\\[",
+		"end": "\\]",
+		"beginCaptures": {
+		  "0": { "name": "entity.name.type.cpp" }
+		},
+		"endCaptures": {
+		  "0": { "name": "entity.name.type.cpp" }
+		},
+		"name": "keyword.condition",
+		"contentName": "entity.name.type.cpp"
+	  },
+	  "unit": {
+		"begin": "\\(",
+		"end": "\\)",
+		"beginCaptures": {
+		  "0": { "name": "string.quoted.other.lt-gt.include.cpp" }
+		},
+		"endCaptures": {
+		  "0": { "name": "string.quoted.other.lt-gt.include.cpp" }
+		},
+		"name": "keyword.unit",		
+		"contentName": "string.quoted.other.lt-gt.include.cpp"
+	  },	  
+	  "comment": {
+		"begin": "[-=][^\\d]",
+		"end": "$\n",
+		"beginCaptures": {
+		  "0": { "name": "entity.name.function.cpp" }
+		},
+		"endCaptures": {
+			"0": { "name": "entity.name.function.cpp" }
+		  },
+		"name": "keyword.comment",		
+		"contentName": "entity.name.function.cpp",
+		"patterns": [{ "include": "#accepted-values" }, { "include": "#condition" }, { "include": "#unit" }, { "include": "#header" }]
+	  },
+	  "header": {
+		"begin": "^[-=][^\\d]|^!",
+		"end": "$\n",
+		"beginCaptures": {
+		  "0": { "name": "comment.line.double-slash.cpp" }
+		},
+		"endCaptures": {
+			"0": { "name": "comment.line.double-slash.cpp" }
+		  },
+		"name": "keyword.comment",		
+		"contentName": "comment.line.double-slash.cpp"
+	  },	  
+	  "number": {
+		"match": "[-+]?\\d*\\.?\\d+[eE][+-]?\\d+|[-+]?\\d*\\.?\\d",
+		"name": "keyword.number"
+	  },
+	  "bolean": {
+		"match": "(?i)true|(?i)false",
+		"name": "keyword.bolean"
+	  },
+	  "default": {
+		"match": "(?i)default",
+		"name": "keyword.bolean"
+	  },
+	  "end": {
+		"match": "(?i)END",
+		"name": "keyword.bolean"
+	  },
+	  "string": {
+		"begin": "\\\"",
+		"end": "\\\"",
+		"beginCaptures": {
+		  "0": { "name": "keyword.control.directive.include.cpp" }
+		},
+		"endCaptures": {
+		  "0": { "name": "keyword.control.directive.include.cpp" }
+		},
+		"name": "keyword.string",		
+		"contentName": "keyword.control.directive.include.cpp",
+		"patterns": [{ "include": "#placeholder" }]
+	  },	  
+	  "key": {
+		"begin": "[a-zA-Z]",
+		"end": " +|$\n",
+		"beginCaptures": {
+		  "0": { "name": "variable.parameter.cpp" }
+		},
+		"endCaptures": {
+		  "0": { "name": "variable.parameter.cpp" }
+		},
+		"name": "keyword.key",		
+		"contentName": "variable.parameter.cpp"
+	  },
+	  "placeholder": {
+		"match": "@",
+		"name": "constant.numeric.decimal.cpp"
+	  }
+	}
+}

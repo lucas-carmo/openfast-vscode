@@ -1,0 +1,25 @@
+{
+  "name": "openfast-vscode",
+  "displayName": "openfast-vscode",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fst",
+      "aliases": ["OpenFASTinput", "fst"],
+      "extensions": [".fst",".dat", ".fstf", ".inp"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "fst",
+      "scopeName": "source.fst",
+      "path": "./syntaxes/fst.tmLanguage.json"
+    }]
+  }
+}
